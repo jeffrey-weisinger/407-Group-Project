@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Group Project 407</string>
+    <string-array name="work_array">
+        <item>"45%"</item>
+        <item>"50%"</item>
+        <item>"55%"</item>
+        <item>"etc..."</item>
+    </string-array>
+
+    <string-array name="recreation_array">
+        <item>"45%"</item>
+        <item>"50%"</item>
+        <item>"55%"</item>
+        <item>"etc..."</item>
+    </string-array>
 </resources>
