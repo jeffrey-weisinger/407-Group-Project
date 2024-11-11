@@ -92,7 +92,6 @@
         android:layout_width="381dp"
         android:layout_height="139dp"
         android:background="@color/background"
-        android:text="Example Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -174,13 +173,24 @@
         android:layout_width="381dp"
         android:layout_height="139dp"
         android:background="@color/background"
-        android:text="Example Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
+        app:layout_constraintVertical_bias="0.655" />
+
+    <TextView
+        android:id="@+id/priorityColor"
+        android:layout_width="39dp"
+        android:layout_height="33dp"
+        android:background="@color/priorityRecreation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/headerRecreation"
@@ -192,10 +202,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <TextView
         android:id="@+id/exampleTask2"
@@ -226,6 +236,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.687" />
 
+
     <TextView
         android:id="@+id/priorityRecreation"
         android:layout_width="wrap_content"
@@ -233,30 +244,16 @@
         android:text="Priority: Mild"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.665"
+        app:layout_constraintHorizontal_bias="0.662"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63" />
-
-    <TextView
-        android:id="@+id/priorityColor"
-        android:layout_width="39dp"
-        android:layout_height="33dp"
-        android:background="@color/priorityRecreation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.879"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.627" />
-
+        app:layout_constraintVertical_bias="0.629" />
 
     <TextView
         android:id="@+id/socialDiv"
         android:layout_width="381dp"
         android:layout_height="139dp"
         android:background="@color/background"
-        android:text="Example Text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
