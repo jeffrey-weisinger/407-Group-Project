@@ -19,16 +19,16 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val workSpinner = findViewById<Spinner>(R.id.workSpinner)
-        val workAdapter = ArrayAdapter.createFromResource(
-            this, R.array.work_array, android.R.layout.simple_spinner_item
-        )
-        workSpinner.adapter = workAdapter
-
-        val recreationSpinner = findViewById<Spinner>(R.id.recreationSpinner)
-        val recreationAdapter = ArrayAdapter.createFromResource(
-            this, R.array.work_array, android.R.layout.simple_spinner_item
-        )
-        recreationSpinner.adapter = recreationAdapter
+//        val workSpinner = findViewById<Spinner>(R.id.workSpinner)
+//        val workAdapter = ArrayAdapter.createFromResource(
+//            this, R.array.work_array, android.R.layout.simple_spinner_item
+//        )
+//        workSpinner.adapter = workAdapter
+//
+//        val recreationSpinner = findViewById<Spinner>(R.id.recreationSpinner)
+//        val recreationAdapter = ArrayAdapter.createFromResource(
+//            this, R.array.work_array, android.R.layout.simple_spinner_item
+//        )
+//        recreationSpinner.adapter = recreationAdapter
     }
 }
