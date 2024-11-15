@@ -18,7 +18,14 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val daySpinner = findViewById<Spinner>(R.id.startingDay)
+        val dayAdapter = ArrayAdapter.createFromResource(
+            this, R.array.starting_day, android.R.layout.simple_spinner_item
+        )
+        daySpinner.adapter = dayAdapter
 
+
+//For score.xml
 //        val workSpinner = findViewById<Spinner>(R.id.workSpinner)
 //        val workAdapter = ArrayAdapter.createFromResource(
 //            this, R.array.work_array, android.R.layout.simple_spinner_item

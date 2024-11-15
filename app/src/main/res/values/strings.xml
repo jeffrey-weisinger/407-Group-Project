@@ -13,4 +13,14 @@
         <item>"55%"</item>
         <item>"etc..."</item>
     </string-array>
+
+    <string-array name="starting_day">
+        <item>"Sunday"</item>
+        <item>"Monday"</item>
+        <item>"Tuesday"</item>
+        <item>"Wednesday"</item>
+        <item>"Thursday"</item>
+        <item>"Friday"</item>
+        <item>"Saturday"</item>
+    </string-array>
 </resources>

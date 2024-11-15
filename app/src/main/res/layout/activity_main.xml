@@ -14,12 +14,13 @@
         android:id="@+id/calendar"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/unselected"
+        android:backgroundTint="@color/selected"
         android:text="Calendar"
+        android:gravity="center_vertical"
         app:cornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02" />
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
 
 
-        android:backgroundTint="@color/unselected"
+        android:backgroundTint="@color/selected"
         android:text="Score"
         app:cornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,16 +56,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.02" />
 
-
     <TextView
-        android:id="@+id/upcomingTasksBox"
+        android:id="@+id/goals"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
         android:background="@color/background"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text=" Upcoming Tasks "
+        android:text=" Settings "
         android:textColor="@color/black"
         android:textSize="32dp"
         android:textStyle="bold"
@@ -74,6 +74,78 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.231" />
+
+
+    <TextView
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="   Time Settings: "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <RadioGroup
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:text="   Time Settings: "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.434" >
+
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="24 Hour"/>
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:text="   Time Settings: "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.507" >
+
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="12 Hour"/>
+
+    </RadioGroup>
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -88,244 +160,166 @@
         app:srcCompat="@drawable/gear" />
 
     <TextView
-        android:id="@+id/schoolworkDiv"
-        android:layout_width="381dp"
-        android:layout_height="139dp"
-        android:background="@color/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373" />
-
-    <TextView
-        android:id="@+id/headerSchoolwork"
-        android:layout_width="381dp"
-        android:layout_height="24dp"
-        android:background="@color/schoolwork"
-        android:text=" Schoolwork"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
-
-    <TextView
-        android:id="@+id/schoolworkTitle"
-        android:layout_width="161dp"
-        android:layout_height="42dp"
-        android:background="@color/background"
-        android:text="Example Task 1"
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:text=" "
         android:textColor="@color/black"
-        android:textSize="20dp"
-
-        android:textStyle="bold"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.362" />
-
-    <TextView
-        android:id="@+id/infoSchoolwork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Due: Weekday, Month, XXth\n\nShort Info about task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.429" />
-
-    <TextView
-        android:id="@+id/prioritySchoolwork"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Priority: Due Soon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.665"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
-
-    <TextView
-        android:id="@+id/prioritySchoolworkColor"
-        android:layout_width="39dp"
-        android:layout_height="33dp"
-        android:background="@color/prioritySchoolwork"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.879"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintVertical_bias="0.581" />
 
 
     <TextView
-        android:id="@+id/recreationDiv"
-        android:layout_width="381dp"
-        android:layout_height="139dp"
+        android:id="@+id/blankTextBox"
+        android:layout_width="192dp"
+        android:layout_height="22dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/white"
+        android:elevation="10dp"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:text=" "
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.591" />
+
+    <TextView
+        android:id="@+id/startingDayText"
+        android:layout_width="206dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity=""
+        android:text="Starting Day: "
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.029"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565" />
+
+    <Spinner
+        android:id="@+id/startingDay"
+        android:layout_width="216dp"
+        android:layout_height="40dp"
+        android:elevation="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.524" />
+
+
+    <TextView
+        android:id="@+id/lightSettings"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.874" />
+
+    <CheckBox
+        android:id="@+id/checkboxSun"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73" />
+
+    <TextView
+        android:id="@+id/lightSettingsSun"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
         android:background="@color/background"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="   Light Settings: "
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.655" />
 
-    <TextView
-        android:id="@+id/priorityColor"
-        android:layout_width="39dp"
-        android:layout_height="33dp"
-        android:background="@color/priorityRecreation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
 
-    <TextView
-        android:id="@+id/headerRecreation"
-        android:layout_width="381dp"
-        android:layout_height="24dp"
-        android:background="@color/recreation"
-        android:text=" Recreation"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
-
-    <TextView
-        android:id="@+id/exampleTask2"
-        android:layout_width="161dp"
-        android:layout_height="42dp"
+    <CheckBox
+        android:id="@+id/BlankPanel"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
         android:background="@color/background"
-        android:text="Example Task 2"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
         android:textColor="@color/black"
-        android:textSize="20dp"
-
-        android:textStyle="bold"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.804   " />
 
-    <TextView
-        android:id="@+id/infoRecreation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Due: Weekday, Month, XXth\n\nShort Info about task"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="45dp"
+        android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.378"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.702"
+        app:srcCompat="@drawable/moon_symbol" />
 
-
-    <TextView
-        android:id="@+id/priorityRecreation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Priority: Mild"
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="46dp"
+        android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
+        app:layout_constraintHorizontal_bias="0.364"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
-
-    <TextView
-        android:id="@+id/socialDiv"
-        android:layout_width="381dp"
-        android:layout_height="139dp"
-        android:background="@color/background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.927" />
-
-    <TextView
-        android:id="@+id/headerSocial"
-        android:layout_width="381dp"
-        android:layout_height="24dp"
-        android:background="@color/social"
-        android:text=" Social"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.776" />
-
-    <TextView
-        android:id="@+id/socialDivTitle"
-        android:layout_width="161dp"
-        android:layout_height="42dp"
-        android:background="@color/background"
-        android:text="Example Task 3"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84" />
-
-    <TextView
-        android:id="@+id/infoSocial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Due: Weekday, Month, XXth\n\nShort Info about task"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924" />
-
-    <TextView
-        android:id="@+id/prioritySocial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Priority: Not Due Soon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.665"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.853" />
-
-    <TextView
-        android:id="@+id/prioritySocialColor"
-        android:layout_width="39dp"
-        android:layout_height="33dp"
-        android:background="@color/prioritySocial"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.643"
+        app:srcCompat="@drawable/sun_symbol" />
 </androidx.constraintlayout.widget.ConstraintLayout>
