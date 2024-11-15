@@ -10,52 +10,6 @@
     tools:layout_editor_absoluteY="0dp">
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/calendar"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/unselected"
-        android:text="Calendar"
-        app:cornerRadius="9dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/upcomingTasks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:backgroundTint="@color/selected"
-        android:text="Upcoming Tasks"
-        app:cornerRadius="9dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/score"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-
-
-        android:backgroundTint="@color/unselected"
-        android:text="Score"
-        app:cornerRadius="9dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.02" />
-
-
     <TextView
         android:id="@+id/upcomingTasksBox"
         android:layout_width="match_parent"
@@ -74,18 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.231" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="59dp"
-        android:layout_height="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.953"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085"
-        app:srcCompat="@drawable/gear" />
 
     <TextView
         android:id="@+id/schoolworkDiv"
