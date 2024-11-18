@@ -1,44 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:columnCount="3"
+    android:rowCount="9"
     tools:context=".editActivity">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:text="Date:"
+         />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="99dp"
         android:text="Activity: "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/textView2"
-        android:layout_width="86dp"
-        android:layout_height="31dp"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_row="0"
+        android:layout_column="0"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Type: "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_row="1"
+        android:layout_column="0"
+            />
+
+    <EditText
+        android:id="@+id/textView2"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="1"
+        android:layout_marginBottom="144dp" />
 
     <Spinner
         android:id="@+id/activityType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        android:layout_row="1"
+        android:layout_column="1"/>
 
-    </Spinner>
+    <Spinner
+        android:id="@+id/chooseMonth"
+        android:layout_width="111dp"
+        android:layout_height="31dp"
+        android:layout_row="3"
+        android:layout_column="1"/>
+
+    <Spinner
+        android:id="@+id/chooseDay"
+        android:layout_width="151dp"
+        android:layout_height="31dp"
+        android:layout_row="4"
+        android:layout_column="1"/>
+
+    <Spinner
+        android:id="@+id/chooseYear"
+        android:layout_width="148dp"
+        android:layout_height="31dp"
+        android:layout_row="5"
+        android:layout_column="1"/>
+
+    <TextView
+        android:id="@+id/notesLinks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notes"
+        android:layout_row="6"
+        android:layout_column="0"
+        />
+
+    <EditText
+        android:id="@+id/editNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="7"
+        android:layout_column="0"
+        android:layout_rowSpan="2"
+        android:layout_columnSpan="2"
+            />
+<!--    this should be bigger and have black border-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="7"
+            android:layout_column="2"
+            />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="8"
+        android:layout_column="2"
+        />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </GridLayout>
