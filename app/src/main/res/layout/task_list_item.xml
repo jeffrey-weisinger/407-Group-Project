@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="6dp"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background">
+
+            <TextView
+                android:id="@+id/taskType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/schoolwork"
+                android:text="Schoolwork"
+                android:padding="6dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/taskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:text="Example Task 1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="6dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background">
+
+                <TextView
+                    android:id="@+id/taskDueDate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="6dp"
+                    android:layout_weight="1"
+                    android:text="Due: Weekday, Month, XXth" />
+
+                <TextView
+                    android:id="@+id/taskPriority"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="6dp"
+                    android:text="Priority: Due Soon" />
+
+                <TextView
+                    android:id="@+id/taskPriorityColor"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:background="@color/prioritySchoolwork" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/taskInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="Short Info about task" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!--  Below are the other two task types (social and
+          recreation), which can be used if needed  -->
+
+    <!--
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="6dp"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background">
+
+            <TextView
+                android:id="@+id/taskTypeTEMPRecreation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/recreation"
+                android:text="Recreation"
+                android:padding="6dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/taskTitleTEMPRecreation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:text="Example Task 2"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="6dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/background">
+
+                    <TextView
+                        android:id="@+id/taskDueDateTEMPRecreation"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="6dp"
+                        android:layout_weight="1"
+                        android:text="Due: Weekday, Month, XXth" />
+
+                    <TextView
+                        android:id="@+id/taskPriorityTEMPRecreation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="6dp"
+                        android:text="Priority: Mild" />
+
+                    <TextView
+                        android:id="@+id/taskPriorityColorTEMPRecreation"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="6dp"
+                        android:background="@color/priorityRecreation" />
+                </LinearLayout>
+
+            <TextView
+                android:id="@+id/taskInfoTEMPRecreation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="Short Info about task" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    -->
+
+    <!--
+    <androidx.cardview.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardElevation="6dp"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background">
+
+            <TextView
+                android:id="@+id/taskTypeTEMPSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/social"
+                android:text="Social"
+                android:padding="6dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/taskTitleTEMPSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:text="Example Task 3"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:padding="6dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background">
+
+                <TextView
+                    android:id="@+id/taskDueDateTEMPSocial"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="6dp"
+                    android:layout_weight="1"
+                    android:text="Due: Weekday, Month, XXth" />
+
+                <TextView
+                    android:id="@+id/taskPriorityTEMPSocial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="6dp"
+                    android:text="Priority: Not Due Soon" />
+
+                <TextView
+                    android:id="@+id/taskPriorityColorTEMPSocial"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="6dp"
+                    android:background="@color/prioritySocial" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/taskInfoTEMPSocial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:text="Short Info about task" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    -->
+
+</LinearLayout>
