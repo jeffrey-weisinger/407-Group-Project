@@ -76,6 +76,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
+            android:name="com.cs407.groupproject407.Calendar"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

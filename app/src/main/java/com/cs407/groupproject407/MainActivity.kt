@@ -23,6 +23,18 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        findViewById<Button>(R.id.calendar).setOnClickListener {
+            fragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, Calendar::class.java, null)
+                .setReorderingAllowed(true)
+                .addToBackStack("")
+                .commit()
+            findViewById<Button>(R.id.upcomingTasks).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
+            findViewById<Button>(R.id.score).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
+            findViewById<Button>(R.id.calendar).setBackgroundColor(ContextCompat.getColor(this, R.color.selected))
+
+        }
+
 
         findViewById<Button>(R.id.upcomingTasks).setOnClickListener {
             fragmentManager.beginTransaction()
@@ -35,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(R.id.calendar).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
 
         }
+
         findViewById<Button>(R.id.score).setOnClickListener {
             fragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, Score::class.java, null)
