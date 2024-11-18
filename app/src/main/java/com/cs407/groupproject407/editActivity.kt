@@ -1,10 +1,12 @@
 package com.cs407.groupproject407
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -98,7 +100,12 @@ class editActivity : AppCompatActivity() {
             }
         }
 
+        //code for Add button
+        val addButton: Button = findViewById(R.id.addButton)
+        addButton.setOnClickListener{
 
+
+        }
 
 
 

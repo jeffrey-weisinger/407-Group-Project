@@ -92,13 +92,13 @@
             />
 <!--    this should be bigger and have black border-->
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/addButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="7"
-            android:layout_column="2"
-            />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="7"
+        android:layout_column="2"
+        android:text="Add" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteButton"
@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_row="8"
         android:layout_column="2"
-        />
+        android:text="Delete" />
 
 
     </GridLayout>

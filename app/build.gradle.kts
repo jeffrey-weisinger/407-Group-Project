@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    //for Room Database:
+    id("com.google.devtools.ksp") version "1.9.22-1.0.17"
+
+
 }
 
 android {
@@ -46,7 +51,16 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
+    //for Calendar
     implementation("com.kizitonwose.calendar:view:2.6.0")
+
+    //for Room Database:
+    val room_version = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$room_version")
+
+    // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
+    // See Add the KSP plugin to your project
+    ksp("androidx.room:room-compiler:$room_version")
 
 }
