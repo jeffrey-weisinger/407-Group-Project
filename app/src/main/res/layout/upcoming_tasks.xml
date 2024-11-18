@@ -15,10 +15,11 @@
         android:id="@+id/taskRecyclerView"
         android:name="com.cs407.groupproject407.ItemListFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/upcomingTasksBox"
         app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toBottomOf="@id/main"
         tools:context="com.cs407.groupproject407.MainActivity"
         tools:listitem="@layout/task_list_item" />
 
