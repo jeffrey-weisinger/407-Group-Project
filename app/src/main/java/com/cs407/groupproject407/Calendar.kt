@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.children
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.CalendarMonth
 import com.kizitonwose.calendar.core.daysOfWeek
@@ -77,6 +79,12 @@ class Calendar : Fragment() {
 
         // Get reference to the CalendarView
         val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab)
+
+        fab.setOnClickListener {
+            val intent = Intent(requireContext(), AddActivity::class.java)
+            startActivity(intent)
+        }
 
         // Setup the day binder for the CalendarView
         calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
