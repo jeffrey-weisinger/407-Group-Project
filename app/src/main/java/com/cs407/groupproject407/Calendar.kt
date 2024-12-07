@@ -39,8 +39,10 @@ class DayViewContainer(view: View) : ViewContainer(view) {
 
     init {
         view.setOnClickListener {
-            val intent = Intent(view.context, editActivity::class.java)
-            intent.putExtra("date", day)
+            val intent = Intent(view.context, AddActivity::class.java)
+            intent.putExtra("year", day.date.year)
+            intent.putExtra("month", day.date.month.value)
+            intent.putExtra("day", day.date.dayOfMonth)
             view.context.startActivity(intent)
 
         }

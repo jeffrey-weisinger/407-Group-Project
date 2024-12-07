@@ -34,6 +34,7 @@ class AddActivity : AppCompatActivity() {
         addButton = findViewById(R.id.add_button)
         cancelButton = findViewById(R.id.cancel_button)
 
+
         // Populate the activity type spinner
         val activityTypes = arrayOf("Work", "School", "Recreation", "Meeting")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, activityTypes)
@@ -41,10 +42,25 @@ class AddActivity : AppCompatActivity() {
 
         activityTypeSpinner.adapter = adapter
 
+        val extras = intent.extras
+        if (extras?.containsKey("year") == true) {
+            val sentYear = extras.getInt("year")
+            val sentMonth = extras.getInt("month") - 1
+            val sentDay = extras.getInt("day")
+            activityDatePicker.updateDate(sentYear, sentMonth, sentDay)
+
+        }
+
+
+
         // Set OnClickListener for addButton and cancelButton (see step 3)
         addButton.setOnClickListener {
             // Retrieve values from input fields
             val activityName = activityNameEditText.text.toString()
+            if (activityName == ""){
+                Toast.makeText(this, "Please choose an Activity Name!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             val activityType = activityTypeSpinner.selectedItem.toString()
             val day = (activityDatePicker.dayOfMonth).toString()
             val month = (activityDatePicker.month + 1).toString()
