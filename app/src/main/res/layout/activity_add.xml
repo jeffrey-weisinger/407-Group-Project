@@ -31,9 +31,21 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_type_spinner" />
+
+    <TimePicker
+        android:id="@+id/activity_time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_date_picker"
+        />
 
     <CheckBox
         android:id="@+id/recurring_checkbox"
@@ -43,7 +55,7 @@
         android:text="Recurring"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activity_date_picker" />
+        app:layout_constraintTop_toBottomOf="@+id/activity_time_picker" />
 
     <EditText
         android:id="@+id/notes_edittext"

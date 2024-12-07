@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONArray
 import org.json.JSONObject
+import java.time.LocalTime
 
 class AddActivity : AppCompatActivity() {
 
@@ -55,18 +56,20 @@ class AddActivity : AppCompatActivity() {
 
             // TODO: Input validation (e.g., check if activityName is empty)
 
-            // Create Intent to pass data back to main activity
-//            val intent = Intent()
-//            intent.putExtra("ACTIVITY_NAME", activityName)
-//            intent.putExtra("ACTIVITY_TYPE", activityType)
-//            intent.putExtra("DAY", day)
-//            intent.putExtra("MONTH", month)
-//            intent.putExtra("YEAR", year)
-//            intent.putExtra("RECURRING", recurring)
-//            intent.putExtra("NOTES", notes)
-//
-//            // Set result and end activity
-//            setResult(RESULT_OK, intent)
+            val timePicker: TimePicker = findViewById(R.id.activity_time_picker)
+            val currentTime = LocalTime.now()
+            var currHour = currentTime.hour
+            var currMinute = currentTime.minute
+            timePicker.hour = currHour
+            timePicker.minute = currMinute
+
+            timePicker.setOnTimeChangedListener { _, hour, minute ->
+                // Perform actions when the time is changed
+                currHour = hour
+                currMinute = minute
+                println("Time changed to: $hour:$minute")
+            }
+
 
 
 
@@ -77,6 +80,7 @@ class AddActivity : AppCompatActivity() {
             jsonObj.put("activityName", activityName)
             jsonObj.put("activityType", activityType)
             jsonObj.put("date", date)
+            jsonObj.put("time", "$currHour:$currMinute")
             jsonObj.put("recurring", recurring)
             jsonObj.put("notes", notes)
 
