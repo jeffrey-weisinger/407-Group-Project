@@ -6,6 +6,14 @@ plugins {
 }
 
 android {
+
+//    this might be necessary
+    buildFeatures {
+        viewBinding = true
+    }
+
+
+
     namespace = "com.cs407.groupproject407"
     compileSdk = 35
 

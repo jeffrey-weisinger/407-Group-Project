@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONObject
 
 class AddActivity : AppCompatActivity() {
 
@@ -50,17 +51,21 @@ class AddActivity : AppCompatActivity() {
             // TODO: Input validation (e.g., check if activityName is empty)
 
             // Create Intent to pass data back to main activity
-            val intent = Intent()
-            intent.putExtra("ACTIVITY_NAME", activityName)
-            intent.putExtra("ACTIVITY_TYPE", activityType)
-            intent.putExtra("DAY", day)
-            intent.putExtra("MONTH", month)
-            intent.putExtra("YEAR", year)
-            intent.putExtra("RECURRING", recurring)
-            intent.putExtra("NOTES", notes)
+//            val intent = Intent()
+//            intent.putExtra("ACTIVITY_NAME", activityName)
+//            intent.putExtra("ACTIVITY_TYPE", activityType)
+//            intent.putExtra("DAY", day)
+//            intent.putExtra("MONTH", month)
+//            intent.putExtra("YEAR", year)
+//            intent.putExtra("RECURRING", recurring)
+//            intent.putExtra("NOTES", notes)
+//
+//            // Set result and end activity
+//            setResult(RESULT_OK, intent)
 
-            // Set result and end activity
-            setResult(RESULT_OK, intent)
+
+
+
             finish()
         }
 

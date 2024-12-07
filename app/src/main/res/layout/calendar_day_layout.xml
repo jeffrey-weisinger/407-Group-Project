@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="16sp"
+        android:textSize="22sp"
         tools:text="22" />
+
+<!--   add bar here for if day has something -->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
