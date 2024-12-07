@@ -1,9 +1,12 @@
 package com.cs407.groupproject407
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONArray
 import org.json.JSONObject
 
 class AddActivity : AppCompatActivity() {
@@ -42,11 +45,13 @@ class AddActivity : AppCompatActivity() {
             // Retrieve values from input fields
             val activityName = activityNameEditText.text.toString()
             val activityType = activityTypeSpinner.selectedItem.toString()
-            val day = activityDatePicker.dayOfMonth
-            val month = activityDatePicker.month
-            val year = activityDatePicker.year
+            val day = (activityDatePicker.dayOfMonth).toString()
+            val month = (activityDatePicker.month + 1).toString()
+            val year = (activityDatePicker.year).toString()
             val recurring = recurringCheckbox.isChecked
             val notes = notesEditText.text.toString()
+            val date = "$year-$month-$day"
+
 
             // TODO: Input validation (e.g., check if activityName is empty)
 
@@ -65,6 +70,25 @@ class AddActivity : AppCompatActivity() {
 
 
 
+            val sharedPref = getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
+            val id = sharedPref.getInt("activityId", 0)
+            val jsonObj = JSONObject()
+            jsonObj.put("id", id)
+            jsonObj.put("activityName", activityName)
+            jsonObj.put("activityType", activityType)
+            jsonObj.put("date", date)
+            jsonObj.put("recurring", recurring)
+            jsonObj.put("notes", notes)
+
+            val editor = sharedPref.edit()
+
+            var jsonArr = JSONArray(sharedPref.getString("userData", ""))
+            Log.i("CURRENT_DATA1", jsonArr.toString())
+            jsonArr.put(jsonObj)
+            editor.putString("userData", jsonArr.toString())
+            editor.putInt("activityId", id+1)
+
+            editor.apply()
 
             finish()
         }
