@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity() {
         val sharedPref = getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
         if (!sharedPref.contains("userData")){
             val editor = sharedPref.edit()
-            editor.putInt("activityId", 1)
             editor.putString("userData", "[]")
             editor.apply()
         }

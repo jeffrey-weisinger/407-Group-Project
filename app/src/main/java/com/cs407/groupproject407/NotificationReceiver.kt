@@ -7,8 +7,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 
+var notificationID = 1
 // Constants for notification
-const val notificationID = 124
+
 const val channelID = "channel1"
 const val titleExtra = "titleExtra"
 const val messageExtra = "messageExtra"
@@ -18,6 +19,7 @@ class NotificationReceiver : BroadcastReceiver() {
 
     // Method called when the broadcast is received
     override fun onReceive(context: Context, intent: Intent) {
+
 
         // Build the notification using NotificationCompat.Builder
         val notification = NotificationCompat.Builder(context, channelID)
@@ -29,9 +31,12 @@ class NotificationReceiver : BroadcastReceiver() {
 
         // Get the NotificationManager service
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
+//        notificationID = System.currentTimeMillis().toInt()
         // Show the notification using the manager
+        notificationID = intent.getIntExtra("requestCode", -1)
         manager.notify(notificationID, notification)
+
+
     }
 }
 

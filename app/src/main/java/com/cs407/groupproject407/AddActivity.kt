@@ -67,8 +67,6 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun requestScheduleExactAlarmPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {  // API 31 and higher
             // If the permission is not granted, we need to request it
@@ -97,8 +95,6 @@ class AddActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_add)
 
-
-
         // Get references to the views
         activityNameEditText = findViewById(R.id.activity_name_edittext)
         activityTypeSpinner = findViewById(R.id.activity_type_spinner)
@@ -107,8 +103,6 @@ class AddActivity : AppCompatActivity() {
         notesEditText = findViewById(R.id.notes_edittext)
         addButton = findViewById(R.id.add_button)
         cancelButton = findViewById(R.id.cancel_button)
-
-
 
         createNotificationChannel()
         requestPermission()
@@ -131,7 +125,6 @@ class AddActivity : AppCompatActivity() {
         }
 
 
-
         // Set OnClickListener for addButton and cancelButton (see step 3)
         addButton.setOnClickListener {
             // Retrieve values from input fields
@@ -151,8 +144,8 @@ class AddActivity : AppCompatActivity() {
 
 
             timePicker = findViewById(R.id.activity_time_picker)
-            //val currentTime = LocalTime.now()
 
+            //add timePicker's listener if necessary
 //            timePicker.setOnTimeChangedListener { _, hour, minute ->
 //
 //            }
@@ -163,7 +156,7 @@ class AddActivity : AppCompatActivity() {
             val currMin = timePicker.minute
 
             val sharedPref = getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
-            val id = sharedPref.getInt("activityId", 0)
+            val id = sharedPref.getInt("activityId", 1)
             val jsonObj = JSONObject()
             jsonObj.put("id", id)
             jsonObj.put("activityName", activityName)
@@ -218,23 +211,18 @@ class AddActivity : AppCompatActivity() {
         val title = activityType + " Time!"
         val message = activityName
 
-//        val day = (activityDatePicker.dayOfMonth).toString()
-//        val month = (activityDatePicker.month + 1).toString()
-//        val year = (activityDatePicker.year).toString()
-//        val recurring = recurringCheckbox.isChecked
-//        val notes = notesEditText.text.toString()
-
-
-
 
         // Add title and message as extras to the intent
         intent.putExtra(titleExtra, title)
         intent.putExtra(messageExtra, message)
-
+        val sharedPref = getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
+        val reqCode = sharedPref.getInt("notificationId", 1)
+        intent.putExtra("requestCode", reqCode)
+        sharedPref.edit().putInt("notificationId", reqCode + 1).apply()
         // Create a PendingIntent for the broadcast
         val pendingIntent = PendingIntent.getBroadcast(
             applicationContext,
-            notificationID,
+            reqCode,
             intent,
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
         )
@@ -283,16 +271,12 @@ class AddActivity : AppCompatActivity() {
 
     private fun getTime(): Long {
 
-
         // Get selected time from TimePicker and DatePicker
         val minute = timePicker.minute
         val hour = timePicker.hour
         val day = activityDatePicker.dayOfMonth
         val month = activityDatePicker.month
         val year = activityDatePicker.year
-
-
-
 
         // Create a Calendar instance and set the selected date and time
         val calendar = Calendar.getInstance()
