@@ -2,9 +2,12 @@ package com.cs407.groupproject407
 
 class TaskSummary (
     var taskID: Int = 0,
+    var taskType: String = "School",
     var taskTitle: String = "Example Title",
-    // TODO: Store date as a Data object
-    var taskDate: String = "Due: Weekday, Month, XXth",
+    var taskDate: String = "YYYY-MM-DD",
+    var taskTime: String = "XX:XX",
+    var dayOfWeek: String = "Monday",
+    var isRecurring: Boolean = false,
     var taskInfo: String = "This is an example task."
 ){
 }

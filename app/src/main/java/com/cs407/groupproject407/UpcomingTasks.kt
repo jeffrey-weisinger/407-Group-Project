@@ -25,7 +25,9 @@ class UpcomingTasks : Fragment() {
             // TODO: Open task editor (using task_detail.xml)
         }
 
-        val tasks = Tasks.getInstance(requireContext()).taskList
+        val taskController = Tasks.getInstance(requireContext())
+        taskController.loadTasks()
+        val tasks = taskController.taskList
         adapter = TaskAdapter(tasks, onClickListener)
         taskRecyclerView.adapter = adapter
 
