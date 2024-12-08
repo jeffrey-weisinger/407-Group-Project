@@ -7,11 +7,13 @@ plugins {
 
 android {
 
-//    this might be necessary
+//    these might be necessary
     buildFeatures {
         viewBinding = true
     }
-
+    viewBinding {
+        enable = true // Use "enable" instead of "isEnabled" or "enabled"
+    }
 
 
     namespace = "com.cs407.groupproject407"
