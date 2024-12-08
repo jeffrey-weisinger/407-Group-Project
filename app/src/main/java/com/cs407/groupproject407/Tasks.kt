@@ -1,6 +1,7 @@
 package com.cs407.groupproject407
 
 import android.content.Context
+import android.content.SharedPreferences
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Calendar
@@ -8,7 +9,7 @@ import java.util.Calendar
 class Tasks private constructor(context: Context) {
 
     var taskList: MutableList<TaskSummary> = mutableListOf()
-    private var taskContext: Context = context
+    private val week: Array<String> = context.resources.getStringArray(R.array.starting_day)
 
     companion object {
         private var instance: Tasks? = null
@@ -21,19 +22,15 @@ class Tasks private constructor(context: Context) {
         }
     }
 
-    init {
-        loadTasks()
-    }
-
     fun getTask(taskID: Int): TaskSummary? {
         return taskList.find { it.taskID == taskID }
     }
 
-    fun loadTasks() {
+    // Load tasks from given sharedPreferences data
+    fun loadTasks(sharedPref: SharedPreferences) {
         taskList = mutableListOf() // Clear list
 
         // Pull tasks from storage
-        val sharedPref = taskContext.getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
         val userData = JSONArray(sharedPref.getString("userData", ""))
 
         for (i in 0..< userData.length()) {
@@ -46,7 +43,7 @@ class Tasks private constructor(context: Context) {
             val currTime = currTask.getString("time")
 
             val currDayOfWeek = calcDayOfWeek(currDate)
-            val dayOfWeekFormatted = formatDayOfWeek(taskContext, currDayOfWeek)
+            val dayOfWeekFormatted = formatDayOfWeek(currDayOfWeek)
 
             val currRecurring = currTask.getBoolean("recurring")
             val currInfo = currTask.getString("notes")
@@ -70,14 +67,12 @@ class Tasks private constructor(context: Context) {
     }
 
     // Convert int value to day of week string
-    private fun formatDayOfWeek(context: Context, dayOfWeek: Int): String {
+    private fun formatDayOfWeek(dayOfWeek: Int): String {
         // TODO: Choose start of week based on user's setting
         val startOfWeek = 1
 
         // -1 to map week's start as Monday to Calendar's start as Sunday
         val weekOffset = -1
-
-        val week: Array<String> = context.resources.getStringArray(R.array.starting_day)
         return week[(startOfWeek + dayOfWeek + weekOffset - 1) % 7]
     }
 }

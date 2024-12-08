@@ -1,5 +1,6 @@
 package com.cs407.groupproject407
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -26,7 +27,7 @@ class UpcomingTasks : Fragment() {
         }
 
         val taskController = Tasks.getInstance(requireContext())
-        taskController.loadTasks()
+        taskController.loadTasks(requireContext().getSharedPreferences("UserActivities", Context.MODE_PRIVATE))
         val tasks = taskController.taskList
         adapter = TaskAdapter(tasks, onClickListener)
         taskRecyclerView.adapter = adapter
