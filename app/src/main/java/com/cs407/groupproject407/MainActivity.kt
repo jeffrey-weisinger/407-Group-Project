@@ -1,5 +1,6 @@
 package com.cs407.groupproject407
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -70,6 +71,15 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(R.id.score).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
             findViewById<Button>(R.id.calendar).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
 
+        }
+
+        //set starting id of activities
+        val sharedPref = getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
+        if (!sharedPref.contains("userData")){
+            val editor = sharedPref.edit()
+            editor.putInt("activityId", 1)
+            editor.putString("userData", "[]")
+            editor.apply()
         }
 
     }
