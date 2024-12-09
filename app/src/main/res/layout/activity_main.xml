@@ -14,9 +14,10 @@
         android:id="@+id/calendar"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/unselected"
+        android:backgroundTint="@color/selected"
         android:text="Calendar"
-        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:gravity="center"
         app:cornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +33,7 @@
 
         android:backgroundTint="@color/unselected"
         android:text="Upcoming Tasks"
+        android:textColor="@color/white"
         app:cornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +50,7 @@
 
         android:backgroundTint="@color/unselected"
         android:text="Score"
+        android:textColor="@color/white"
         app:cornerRadius="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

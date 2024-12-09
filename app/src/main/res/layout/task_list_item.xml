@@ -35,7 +35,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/background"
                 android:text="Example Task 1"
-                android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:padding="6dp"/>

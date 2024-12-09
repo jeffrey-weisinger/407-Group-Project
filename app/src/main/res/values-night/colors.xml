@@ -2,9 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="selected">#BE0119</color>
-    <color name="unselected">#FF5347</color>
-    <color name="background">#D4D7D9</color>
+    <color name="selected">#FF5347</color>
+    <color name="unselected">#BE0119</color>
+    <color name="background">#2B2735</color>
     <color name="background2">#C3C3BD</color>
     <color name="score">#1DEB65</color>
 

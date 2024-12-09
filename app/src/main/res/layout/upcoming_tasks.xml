@@ -32,7 +32,6 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="Upcoming Tasks"
-        android:textColor="@color/black"
         android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
