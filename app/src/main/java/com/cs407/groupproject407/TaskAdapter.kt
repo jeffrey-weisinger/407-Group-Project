@@ -1,13 +1,11 @@
 package com.cs407.groupproject407
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import java.util.*
-import android.content.Context
+import androidx.core.content.ContextCompat
 
 class TaskAdapter(
     private val taskList: List<TaskSummary>,
@@ -43,6 +41,19 @@ class TaskViewHolder(
     fun bind(taskSummary: TaskSummary) {
         taskTitle.text = taskSummary.taskTitle
         taskType.text = taskSummary.taskType
+
+        // Set task type background color
+        if (taskSummary.taskType == "School") {
+            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.schoolwork))
+        } else if (taskSummary.taskType == "Recreation") {
+            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.recreation))
+        } else if (taskSummary.taskType == "Social") {
+            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.social))
+        } else if (taskSummary.taskType == "Work") {
+            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.work))
+        } else if (taskSummary.taskType == "Meeting") {
+            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.meeting))
+        }
 
         val formattedTime = formatTime(taskSummary.taskTime)
         val dayOfWeek = taskSummary.dayOfWeek

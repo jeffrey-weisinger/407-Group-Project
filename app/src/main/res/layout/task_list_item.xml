@@ -69,7 +69,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_margin="6dp"
-                    android:background="@color/prioritySchoolwork" />
+                    android:background="@color/prioritySoon" />
             </LinearLayout>
 
             <TextView

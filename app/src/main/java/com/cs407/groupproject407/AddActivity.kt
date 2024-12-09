@@ -109,7 +109,7 @@ class AddActivity : AppCompatActivity() {
 
 
         // Populate the activity type spinner
-        val activityTypes = arrayOf("Work", "School", "Recreation", "Meeting")
+        val activityTypes = arrayOf("Work", "School", "Recreation", "Meeting", "Social")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, activityTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 

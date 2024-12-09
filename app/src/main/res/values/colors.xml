@@ -7,11 +7,15 @@
     <color name="background">#D4D7D9</color>
     <color name="background2">#C3C3BD</color>
     <color name="score">#1DEB65</color>
+
     <color name="schoolwork">#1DACD6</color>
-    <color name="prioritySchoolwork">#FF4040</color>
-    <color name="recreation">#FF1493</color>
-    <color name="priorityRecreation">#EAC117</color>
-    <color name="social">#EAB33B</color>
-    <color name="prioritySocial">#0BDA51</color>
+    <color name="recreation">#E840B5</color>
+    <color name="social">#DDAA44</color>
+    <color name="work">#4BD17C</color>
+    <color name="meeting">#A23CEA</color>
+
+    <color name="prioritySoon">#FF4040</color>
+    <color name="priorityMild">#EAC117</color>
+    <color name="priorityNotSoon">#0BDA51</color>
 
 </resources>
