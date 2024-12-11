@@ -33,7 +33,7 @@ class Tasks private constructor(context: Context) {
 
         // Pull tasks from storage
         val userData = JSONArray(sharedPref.getString("userData", ""))
-        val toRemove = mutableListOf<Int>()
+        //val toRemove = mutableListOf<Int>()
 
         for (i in 0..< userData.length()) {
             val currTask = JSONObject(userData.getString(i))
@@ -43,8 +43,8 @@ class Tasks private constructor(context: Context) {
 
             // Collect tasks to remove
             if (calcIsOld(currDate, currTime)) {
-                toRemove.add(i)
-                return
+                continue
+                //toRemove.add(i)
             }
 
             val currId = currTask.getInt("id")
@@ -60,7 +60,7 @@ class Tasks private constructor(context: Context) {
             taskList.add(TaskSummary(currId, currType, currTitle, currDate, currTime, dayOfWeekFormatted, currRecurring, currInfo))
         }
 
-        removeOldTasks(sharedPref, toRemove)
+        //removeOldTasks(sharedPref, toRemove)
 
         // Sort list by date and time
         taskList.sortBy { task ->

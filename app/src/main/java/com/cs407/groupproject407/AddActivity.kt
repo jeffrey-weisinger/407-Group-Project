@@ -134,7 +134,10 @@ class AddActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             val activityType = activityTypeSpinner.selectedItem.toString()
-            val day = (activityDatePicker.dayOfMonth).toString()
+            var day = (activityDatePicker.dayOfMonth).toString()
+            if (day.length < 2){
+                day = "0$day"
+            }
             val month = (activityDatePicker.month + 1).toString()
             val year = (activityDatePicker.year).toString()
             val recurring = recurringCheckbox.isChecked
