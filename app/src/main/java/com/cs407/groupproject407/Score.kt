@@ -119,6 +119,10 @@ class Score : Fragment() {
         if (mean == 0f){
             scoreText.text = "0 / 1000"
         }else{
+            if (score.toInt() < 0){
+                //Negative score doesn't make sense
+                score = 0f
+            }
             scoreText.text = score.toInt().toString() + " / 1000"
         }
 
