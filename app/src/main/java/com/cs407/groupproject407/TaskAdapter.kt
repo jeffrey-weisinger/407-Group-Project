@@ -1,5 +1,6 @@
 package com.cs407.groupproject407
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Calendar
 import java.util.GregorianCalendar
+import android.content.SharedPreferences
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TaskAdapter(
     private val taskList: List<TaskSummary>,
@@ -107,22 +113,24 @@ class TaskViewHolder(
     private fun formatTime(time: String): String {
         val splitTime = time.split(":").toMutableList()
 
-        // TODO: Use 12/24 hour based on user's setting
-        val format = 12
+        // Use 12/24 hour based on user's setting
+        val sharedPrefs = itemView.context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val is24HourFormat = sharedPrefs.getBoolean("is24HourFormat", true)
 
-        var timeOfDay = "AM"
-        if (format == 12) {
-            if (splitTime[0].toInt() > 12) {
-                splitTime[0] = (splitTime[0].toInt() - 12).toString()
-                timeOfDay = "PM"
-            }
-            if (splitTime[1].length == 1) {
-                splitTime[1] += "0"
-            }
-        } else if (format == 24) {
-            timeOfDay = ""
+        if (splitTime[1].length == 1) {
+            splitTime[1] += "0"
         }
 
-        return "${splitTime[0]}:${splitTime[1]} $timeOfDay"
+        var timeOfDay = " AM"
+        if (is24HourFormat) {
+            timeOfDay = ""
+        } else {
+            if (splitTime[0].toInt() > 12) {
+                splitTime[0] = (splitTime[0].toInt() - 12).toString()
+                timeOfDay = " PM"
+            }
+        }
+
+        return "${splitTime[0]}:${splitTime[1]}$timeOfDay"
     }
 }
