@@ -1,5 +1,6 @@
 package com.cs407.groupproject407
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,7 +20,9 @@ import com.kizitonwose.calendar.view.CalendarView
 import com.kizitonwose.calendar.view.MonthDayBinder
 import com.kizitonwose.calendar.view.MonthHeaderFooterBinder
 import com.kizitonwose.calendar.view.ViewContainer
+import org.json.JSONArray
 import java.time.YearMonth
+import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
 
@@ -79,8 +82,7 @@ class Calendar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Get reference to the CalendarView
-        val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
+
         val fab = view.findViewById<FloatingActionButton>(R.id.fab)
 
         fab.setOnClickListener {
@@ -89,6 +91,7 @@ class Calendar : Fragment() {
         }
 
         // Setup the day binder for the CalendarView
+        val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
         calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
 
             // Called only when a new container is needed
@@ -100,8 +103,32 @@ class Calendar : Fragment() {
             override fun bind(container: DayViewContainer, data: CalendarDay) {
                 container.day = data
                 container.textView.text = data.date.dayOfMonth.toString()
-                // Additional customization can go here
-                // Example: Change background color for weekends, disable past dates, etc.
+
+                val socialMarker = container.view.findViewById<View>(R.id.social_marker)
+                val meetMarker = container.view.findViewById<View>(R.id.meeting_marker)
+                val recMarker = container.view.findViewById<View>(R.id.recreation_marker)
+                val schoolMarker = container.view.findViewById<View>(R.id.school_marker)
+                val workMarker = container.view.findViewById<View>(R.id.work_marker)
+
+                val sharedPref = requireContext().getSharedPreferences("UserActivities", Context.MODE_PRIVATE)
+                val jsonArr = JSONArray(sharedPref.getString("userData", ""))
+
+                val formattedDate = data.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+                for (i in 0 until jsonArr.length()) {
+                    // You can access each element using jsonArray.get(i)
+                    val jsonObject = jsonArr.getJSONObject(i)
+                    if (jsonObject.getString("date") == formattedDate){
+                        val type = jsonObject.getString("activityType")
+                        when (type) {
+                            "Work" -> workMarker.visibility = View.VISIBLE
+                            "School" -> schoolMarker.visibility = View.VISIBLE
+                            "Recreation" -> recMarker.visibility = View.VISIBLE
+                            "Meeting" -> meetMarker.visibility = View.VISIBLE
+                            "Social" -> socialMarker.visibility = View.VISIBLE
+                        }
+                    }
+                }
             }
         }
 
