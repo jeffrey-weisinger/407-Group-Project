@@ -49,56 +49,88 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36" />
 
-    <RadioGroup
+
+    <CheckBox
         android:id="@+id/layout2"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
         android:background="@color/background2"
         android:fontFamily="sans-serif"
-        android:gravity=""
-        android:text="   Time Settings: "
+        android:text="24 Hour"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" >
+        app:layout_constraintVertical_bias="0.434" />
 
-
-    <RadioButton
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="24 Hour"/>
-
-    </RadioGroup>
-
-    <RadioGroup
+    <CheckBox
         android:id="@+id/layout3"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
         android:background="@color/background"
         android:fontFamily="sans-serif"
-        android:gravity=""
-        android:text="   Time Settings: "
-        android:textColor="@color/black"
+        android:text="12 Hour"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.507" >
+        app:layout_constraintVertical_bias="0.507" />
+
+<!--    <RadioGroup-->
+<!--        android:id="@+id/layout2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:layout_marginBottom="91dp"-->
+<!--        android:background="@color/background2"-->
+<!--        android:fontFamily="sans-serif"-->
+<!--        android:gravity=""-->
+<!--        android:text="   Time Settings: "-->
+<!--        android:textSize="18dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.518"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.434" >-->
 
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="12 Hour"/>
+<!--    <RadioButton-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:text="24 Hour"/>-->
 
-    </RadioGroup>
+<!--    </RadioGroup>-->
+
+<!--    <RadioGroup-->
+<!--        android:id="@+id/layout3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="52dp"-->
+<!--        android:layout_marginBottom="91dp"-->
+<!--        android:background="@color/background"-->
+<!--        android:fontFamily="sans-serif"-->
+<!--        android:gravity=""-->
+<!--        android:text="   Time Settings: "-->
+<!--        android:textSize="18dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.518"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.507" >-->
+
+
+<!--        <RadioButton-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="12 Hour"/>-->
+
+<!--    </RadioGroup>-->
     
     <TextView
         android:id="@+id/layout4"
@@ -109,7 +141,6 @@
         android:fontFamily="sans-serif"
         android:gravity=""
         android:text=" "
-        android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +160,6 @@
         android:fontFamily="sans-serif"
         android:gravity=""
         android:text=" "
-        android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -192,7 +222,6 @@
         android:background="@color/background2"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -227,7 +256,6 @@
         android:background="@color/background"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

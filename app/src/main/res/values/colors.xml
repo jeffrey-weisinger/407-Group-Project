@@ -5,13 +5,13 @@
     <color name="selected">#BE0119</color>
     <color name="unselected">#FF5347</color>
     <color name="background">#D4D7D9</color>
-    <color name="background2">#C3C3BD</color>
+    <color name="background2">#B6B8BA</color>
     <color name="score">#1DEB65</color>
 
     <color name="schoolwork">#1DACD6</color>
-    <color name="recreation">#90c73b</color>#E840B5
+    <color name="recreation">#90c73b</color>
     <color name="social">#DDAA44</color>
-    <color name="work">#E840B5</color>#90c73b
+    <color name="work">#E840B5</color>
     <color name="meeting">#A23CEA</color>
 
     <color name="prioritySoon">#FF4040</color>
