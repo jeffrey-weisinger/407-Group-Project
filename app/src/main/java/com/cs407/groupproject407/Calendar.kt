@@ -34,10 +34,7 @@ private const val ARG_PARAM2 = "param2"
 class DayViewContainer(view: View) : ViewContainer(view) {
     val textView = view.findViewById<TextView>(R.id.calendarDayText)
 
-    // With ViewBinding
-    // val textView = CalendarDayLayoutBinding.bind(view).calendarDayText
 
-    //add onclick:
     lateinit var day: CalendarDay
 
     init {
@@ -53,13 +50,12 @@ class DayViewContainer(view: View) : ViewContainer(view) {
 }
 
 class MonthViewContainer(view: View) : ViewContainer(view) {
-    // Alternatively, you can add an ID to the container layout and use findViewById()
+
     val titlesContainer = view as ViewGroup
 }
 
 
 class Calendar : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -82,7 +78,6 @@ class Calendar : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         val fab = view.findViewById<FloatingActionButton>(R.id.fab)
 
         fab.setOnClickListener {
@@ -90,16 +85,18 @@ class Calendar : Fragment() {
             startActivity(intent)
         }
 
-        // Setup the day binder for the CalendarView
-        val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
-        calendarView.dayBinder = object : MonthDayBinder<DayViewContainer> {
+    }
 
-            // Called only when a new container is needed
+    override fun onResume() {
+        super.onResume()
+
+        // Setup the day binder for the CalendarView
+        val calendarView = view?.findViewById<CalendarView>(R.id.calendarView)
+        calendarView?.dayBinder = object : MonthDayBinder<DayViewContainer> {
             override fun create(view: View): DayViewContainer {
                 return DayViewContainer(view)
             }
 
-            // Called every time we need to reuse a container
             override fun bind(container: DayViewContainer, data: CalendarDay) {
                 container.day = data
                 container.textView.text = data.date.dayOfMonth.toString()
@@ -116,9 +113,8 @@ class Calendar : Fragment() {
                 val formattedDate = data.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 
                 for (i in 0 until jsonArr.length()) {
-                    // You can access each element using jsonArray.get(i)
                     val jsonObject = jsonArr.getJSONObject(i)
-                    if (jsonObject.getString("date") == formattedDate){
+                    if (jsonObject.getString("date") == formattedDate) {
                         val type = jsonObject.getString("activityType")
                         when (type) {
                             "Work" -> workMarker.visibility = View.VISIBLE
@@ -133,55 +129,28 @@ class Calendar : Fragment() {
         }
 
         val currentMonth = YearMonth.now()
-        val startMonth = currentMonth // currentMonth.minusMonths(100)
+        val startMonth = currentMonth
         val endMonth = currentMonth.plusMonths(12) // Adjust as needed
-        val firstDayOfWeek = firstDayOfWeekFromLocale() // Available from the library
-        calendarView.setup(startMonth, endMonth, firstDayOfWeek)
-        calendarView.scrollToMonth(currentMonth)
+        val firstDayOfWeek = firstDayOfWeekFromLocale()
+        calendarView?.setup(startMonth, endMonth, firstDayOfWeek)
+        calendarView?.scrollToMonth(currentMonth)
 
         val daysOfWeek = daysOfWeek()
-        calendarView.setup(startMonth, endMonth, daysOfWeek.first())
+        calendarView?.setup(startMonth, endMonth, daysOfWeek.first())
 
-        val titlesContainer = view.findViewById<ViewGroup>(R.id.titlesContainer1)
-        titlesContainer.children
-            .map { it.findViewById<TextView>(R.id.calendarDayText) }
-            .forEachIndexed { index, textView ->
+        val titlesContainer = view?.findViewById<ViewGroup>(R.id.titlesContainer1)
+        titlesContainer?.children
+            ?.map { it.findViewById<TextView>(R.id.calendarDayText) }
+            ?.forEachIndexed { index, textView ->
                 val dayOfWeek = daysOfWeek[index]
                 val title = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())
                 textView.text = title
             }
 
-
-
-
-        //month stuff
-        calendarView.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
+        //month header stuff
+        calendarView?.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
             override fun create(view: View) = MonthViewContainer(view)
-            //given example code:
-//            override fun bind(container: MonthViewContainer, data: CalendarMonth) {
-//                // Remember that the header is reused so this will be called for each month.
-//                // However, the first day of the week will not change so no need to bind
-//                // the same view every time it is reused.
-//                if (container.titlesContainer.tag == null) {
-//                    container.titlesContainer.tag = data.yearMonth
-//                    container.titlesContainer.children.map { it.findViewById<TextView>(R.id.calendarDayText) }
-//                        .forEachIndexed { index, textView ->
-//
-//                            val dayOfWeek = daysOfWeek[index]
-//                            val title = dayOfWeek.getDisplayName(TextStyle.SHORT, Locale.getDefault())
-//
-//
-//                            textView.text = title
-//                            // In the code above, we use the same `daysOfWeek` list
-//                            // that was created when we set up the calendar.
-//                            // However, we can also get the `daysOfWeek` list from the month data:
-//                            // val daysOfWeek = data.weekDays.first().map { it.date.dayOfWeek }
-//                            // Alternatively, you can get the value for this specific index:
-//                            // val dayOfWeek = data.weekDays.first()[index].date.dayOfWeek
-//                        }
-//                }
-//            }
-            //test code
+
             override fun bind(container: MonthViewContainer, data: CalendarMonth) {
                 if (container.titlesContainer.tag == null) {
                     container.titlesContainer.tag = data.yearMonth
@@ -204,21 +173,10 @@ class Calendar : Fragment() {
                         }
                 }
             }
-
         }
-
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Calendar.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Calendar().apply {
