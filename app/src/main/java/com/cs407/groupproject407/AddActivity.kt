@@ -138,7 +138,10 @@ class AddActivity : AppCompatActivity() {
             if (day.length < 2){
                 day = "0$day"
             }
-            val month = (activityDatePicker.month + 1).toString()
+            var month = (activityDatePicker.month + 1).toString()
+            if (month.length < 2){
+                month = "0$month"
+            }
             val year = (activityDatePicker.year).toString()
             val recurring = recurringCheckbox.isChecked
             val notes = notesEditText.text.toString()
