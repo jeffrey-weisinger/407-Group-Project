@@ -33,6 +33,8 @@ class Settings : Fragment() {
 
 
         val sharedPrefs = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+
+
         // Load theme preference
         val isLightThemeEnabled = sharedPrefs.getBoolean("light_theme_enabled", true)
         applyTheme(isLightThemeEnabled)
@@ -66,6 +68,40 @@ class Settings : Fragment() {
             }
             editor.apply()
         }
+
+
+        val checkbox24Hour = settingsView.findViewById<CheckBox>(R.id.layout2)
+        val checkbox12Hour = settingsView.findViewById<CheckBox>(R.id.layout3)
+
+        // Load time format preference
+        val is24HourFormat = sharedPrefs.getBoolean("is24HourFormat", true) // Default to 24-hour
+        checkbox24Hour.isChecked = is24HourFormat
+        checkbox12Hour.isChecked = !is24HourFormat
+
+        checkbox24Hour.setOnCheckedChangeListener { _, isChecked ->
+            val editor = sharedPrefs.edit()
+            if (isChecked) {
+                checkbox12Hour.isChecked = false
+                editor.putBoolean("is24HourFormat", true)
+            } else {
+                checkbox12Hour.isChecked = true
+                editor.putBoolean("is24HourFormat", false)
+            }
+            editor.apply()
+        }
+
+        checkbox12Hour.setOnCheckedChangeListener { _, isChecked ->
+            val editor = sharedPrefs.edit()
+            if (isChecked) {
+                checkbox24Hour.isChecked = false
+                editor.putBoolean("is24HourFormat", false)
+            } else {
+                checkbox24Hour.isChecked = true
+                editor.putBoolean("is24HourFormat", true)
+            }
+            editor.apply()
+        }
+
 
         return settingsView
     }

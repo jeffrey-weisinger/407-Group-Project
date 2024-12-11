@@ -22,6 +22,7 @@
         android:layout_height="7dp"
         android:background="@color/social"
         android:layout_marginEnd="22dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
@@ -32,9 +33,11 @@
         android:layout_height="7dp"
         android:background="@color/meeting"
         android:layout_marginEnd="22dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/social_marker" />
+        app:layout_constraintBottom_toTopOf="@+id/social_marker"
+        />
 
     <View
         android:id="@+id/recreation_marker"
@@ -42,6 +45,7 @@
         android:layout_height="7dp"
         android:background="@color/recreation"
         android:layout_marginEnd="22dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/meeting_marker" />
@@ -52,6 +56,7 @@
         android:layout_height="7dp"
         android:background="@color/schoolwork"
         android:layout_marginEnd="22dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/recreation_marker" />
@@ -62,6 +67,7 @@
         android:layout_height="7dp"
         android:background="@color/work"
         android:layout_marginEnd="22dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/school_marker" />
