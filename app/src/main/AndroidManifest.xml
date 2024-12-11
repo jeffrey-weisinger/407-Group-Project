@@ -16,9 +16,6 @@
             android:name=".NotificationReceiver"
             android:enabled="true"/>
         <activity
-            android:name=".editActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
