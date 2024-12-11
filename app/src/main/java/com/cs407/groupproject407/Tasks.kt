@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Calendar
+import java.util.GregorianCalendar
 
 class Tasks private constructor(context: Context) {
 
@@ -32,15 +33,23 @@ class Tasks private constructor(context: Context) {
 
         // Pull tasks from storage
         val userData = JSONArray(sharedPref.getString("userData", ""))
+        val toRemove = mutableListOf<Int>()
 
         for (i in 0..< userData.length()) {
             val currTask = JSONObject(userData.getString(i))
 
+            val currDate = currTask.getString("date")
+            val currTime = currTask.getString("time")
+
+            // Collect tasks to remove
+            if (calcIsOld(currDate, currTime)) {
+                toRemove.add(i)
+                return
+            }
+
             val currId = currTask.getInt("id")
             val currType = currTask.getString("activityType")
             val currTitle = currTask.getString("activityName")
-            val currDate = currTask.getString("date")
-            val currTime = currTask.getString("time")
 
             val currDayOfWeek = calcDayOfWeek(currDate)
             val dayOfWeekFormatted = formatDayOfWeek(currDayOfWeek)
@@ -50,6 +59,8 @@ class Tasks private constructor(context: Context) {
 
             taskList.add(TaskSummary(currId, currType, currTitle, currDate, currTime, dayOfWeekFormatted, currRecurring, currInfo))
         }
+
+        removeOldTasks(sharedPref, toRemove)
 
         // Sort list by date and time
         taskList.sortBy { task ->
@@ -92,6 +103,35 @@ class Tasks private constructor(context: Context) {
         val calendar = Calendar.getInstance()
         calendar.set(year, month, day)
         return calendar.get(Calendar.DAY_OF_WEEK)
+    }
+
+    private fun calcIsOld(date: String, time: String): Boolean {
+        // Get day of week from Calendar
+        val splitDate = date.split("-")
+        val splitTime = time.split(":")
+
+        val day = splitDate[2].toInt()
+        val month = splitDate[1].toInt() - 1 // 0 indexed
+        val year = splitDate[0].toInt()
+        val hour = splitTime[0].toInt()
+        val minute = splitTime[1].toInt()
+
+        // Set priority
+        val compareTime = GregorianCalendar(year, month, day, hour, minute)
+        return Calendar.getInstance().time.after(compareTime.time)
+    }
+
+    private fun removeOldTasks(sharedPref: SharedPreferences, toRemove: MutableList<Int>) {
+        val userData = JSONArray(sharedPref.getString("userData", ""))
+        for (i in 0..< toRemove.size) {
+            userData.remove(toRemove[i])
+            taskList.removeAt(toRemove[i])
+        }
+
+        val editor = sharedPref.edit()
+        editor.remove("userData")
+        editor.putString("userData", userData.toString())
+        editor.apply()
     }
 
     // Convert int value to day of week string
