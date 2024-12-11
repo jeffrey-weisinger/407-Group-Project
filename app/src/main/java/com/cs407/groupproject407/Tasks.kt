@@ -50,6 +50,34 @@ class Tasks private constructor(context: Context) {
 
             taskList.add(TaskSummary(currId, currType, currTitle, currDate, currTime, dayOfWeekFormatted, currRecurring, currInfo))
         }
+
+        // Sort list by date and time
+        taskList.sortBy { task ->
+            // Format date for sorting as an int
+            var taskDateToList = task.taskDate.split("-")
+            taskDateToList = taskDateToList.map{date ->
+                if (date.length < 2) {
+                    return@map "0${date}"
+                } else {
+                    return@map date
+                }
+            }
+
+            // Format time for sorting as an int
+            var taskTimeToList = task.taskTime.split(":")
+            taskTimeToList = taskTimeToList.map{time ->
+                if (time.length < 2) {
+                    return@map "0${time}"
+                } else {
+                    return@map time
+                }
+            }
+
+            val taskDateFinal = taskDateToList.reduce{ prev, cur -> ("$prev$cur")}.toInt()
+            val taskTimeFinal = taskTimeToList.reduce{ prev, cur -> ("$prev$cur")}.toInt()
+            // Return as a float; integer is too big
+            return@sortBy ("$taskDateFinal.$taskTimeFinal").toFloat()
+        }
     }
 
     // Get day of week as int, given date
