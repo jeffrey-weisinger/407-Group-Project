@@ -2,6 +2,11 @@ package com.cs407.groupproject407
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Calendar
@@ -44,7 +49,7 @@ class Tasks private constructor(context: Context) {
             // Collect tasks to remove
             if (calcIsOld(currDate, currTime)) {
                 toRemove.add(i)
-                return
+                continue
             }
 
             val currId = currTask.getInt("id")
@@ -60,7 +65,10 @@ class Tasks private constructor(context: Context) {
             taskList.add(TaskSummary(currId, currType, currTitle, currDate, currTime, dayOfWeekFormatted, currRecurring, currInfo))
         }
 
-        removeOldTasks(sharedPref, toRemove)
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch {
+            removeOldTasks(sharedPref, toRemove)
+        }
 
         // Sort list by date and time
         taskList.sortBy { task ->
@@ -86,8 +94,8 @@ class Tasks private constructor(context: Context) {
 
             val taskDateFinal = taskDateToList.reduce{ prev, cur -> ("$prev$cur")}.toInt()
             val taskTimeFinal = taskTimeToList.reduce{ prev, cur -> ("$prev$cur")}.toInt()
-            // Return as a float; integer is too big
-            return@sortBy ("$taskDateFinal.$taskTimeFinal").toFloat()
+            // Sort by date, then time
+            return@sortBy ("$taskDateFinal.$taskTimeFinal")
         }
     }
 
@@ -121,11 +129,13 @@ class Tasks private constructor(context: Context) {
         return Calendar.getInstance().time.after(compareTime.time)
     }
 
-    private fun removeOldTasks(sharedPref: SharedPreferences, toRemove: MutableList<Int>) {
+    private suspend fun removeOldTasks(sharedPref: SharedPreferences, toRemove: MutableList<Int>) {
         val userData = JSONArray(sharedPref.getString("userData", ""))
+        var modifiedToRemove = listOf(toRemove)[0]
+
         for (i in 0..< toRemove.size) {
-            userData.remove(toRemove[i])
-            taskList.removeAt(toRemove[i])
+            userData.remove(modifiedToRemove[i])
+            modifiedToRemove = modifiedToRemove.map { it - 1 }.toMutableList() // Shift indexes
         }
 
         val editor = sharedPref.edit()
