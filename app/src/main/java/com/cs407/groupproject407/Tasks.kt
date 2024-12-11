@@ -2,11 +2,10 @@ package com.cs407.groupproject407
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.Calendar
@@ -56,13 +55,21 @@ class Tasks private constructor(context: Context) {
             val currType = currTask.getString("activityType")
             val currTitle = currTask.getString("activityName")
 
-            val currDayOfWeek = calcDayOfWeek(currDate)
-            val dayOfWeekFormatted = formatDayOfWeek(currDayOfWeek)
+            val dayOfWeekTemp = ""
+            CoroutineScope(Dispatchers.IO).launch {
+                val currDayOfWeek = calcDayOfWeek(currDate)
+                val dayOfWeekFormatted = formatDayOfWeek(currDayOfWeek)
+                // Ensure task has been added to list first
+                while (taskList.size <= i) {
+                    continue
+                }
+                taskList[i].dayOfWeek = dayOfWeekFormatted
+            }
 
             val currRecurring = currTask.getBoolean("recurring")
             val currInfo = currTask.getString("notes")
 
-            taskList.add(TaskSummary(currId, currType, currTitle, currDate, currTime, dayOfWeekFormatted, currRecurring, currInfo))
+            taskList.add(TaskSummary(currId, currType, currTitle, currDate, currTime, dayOfWeekTemp, currRecurring, currInfo))
         }
 
         val scope = CoroutineScope(Dispatchers.IO)
@@ -100,19 +107,32 @@ class Tasks private constructor(context: Context) {
     }
 
     // Get day of week as int, given date
-    private fun calcDayOfWeek(date: String): Int {
-        val splitDate = date.split("-")
+    private suspend fun calcDayOfWeek(date: String): Int {
+        return withContext(Dispatchers.Default) {
+            val splitDate = date.split("-")
 
-        // Get day of week from Calendar
-        val day = splitDate[2].toInt()
-        val month = splitDate[1].toInt() - 1 // 0 indexed
-        val year = splitDate[0].toInt()
+            // Get day of week from Calendar
+            val day = splitDate[2].toInt()
+            val month = splitDate[1].toInt() - 1 // 0 indexed
+            val year = splitDate[0].toInt()
 
-        val calendar = Calendar.getInstance()
-        calendar.set(year, month, day)
-        return calendar.get(Calendar.DAY_OF_WEEK)
+            val calendar = Calendar.getInstance()
+            calendar.set(year, month, day)
+            return@withContext calendar.get(Calendar.DAY_OF_WEEK)
+        }
     }
 
+    // Convert int value to day of week string
+    private fun formatDayOfWeek(dayOfWeek: Int): String {
+        // TODO: Choose start of week based on user's setting
+        val startOfWeek = 1
+
+        // -1 to map week's start as Monday to Calendar's start as Sunday
+        val weekOffset = -1
+        return week[(startOfWeek + dayOfWeek + weekOffset - 1) % 7]
+    }
+
+    // Calculate if the task's due date has passed
     private fun calcIsOld(date: String, time: String): Boolean {
         // Get day of week from Calendar
         val splitDate = date.split("-")
@@ -129,28 +149,23 @@ class Tasks private constructor(context: Context) {
         return Calendar.getInstance().time.after(compareTime.time)
     }
 
+    // Remove tasks whose due dates have passed
     private suspend fun removeOldTasks(sharedPref: SharedPreferences, toRemove: MutableList<Int>) {
-        val userData = JSONArray(sharedPref.getString("userData", ""))
-        var modifiedToRemove = listOf(toRemove)[0]
+        withContext(Dispatchers.IO) {
+            val userData = JSONArray(sharedPref.getString("userData", ""))
+            var modifiedToRemove = listOf(toRemove)[0]
 
-        for (i in 0..< toRemove.size) {
-            userData.remove(modifiedToRemove[i])
-            modifiedToRemove = modifiedToRemove.map { it - 1 }.toMutableList() // Shift indexes
+            for (i in 0..<toRemove.size) {
+                userData.remove(modifiedToRemove[i])
+                modifiedToRemove = modifiedToRemove.map { it - 1 }.toMutableList() // Shift indexes
+            }
+
+            val editor = sharedPref.edit()
+            editor.remove("userData")
+            editor.putString("userData", userData.toString())
+            editor.apply()
         }
-
-        val editor = sharedPref.edit()
-        editor.remove("userData")
-        editor.putString("userData", userData.toString())
-        editor.apply()
     }
 
-    // Convert int value to day of week string
-    private fun formatDayOfWeek(dayOfWeek: Int): String {
-        // TODO: Choose start of week based on user's setting
-        val startOfWeek = 1
 
-        // -1 to map week's start as Monday to Calendar's start as Sunday
-        val weekOffset = -1
-        return week[(startOfWeek + dayOfWeek + weekOffset - 1) % 7]
-    }
 }
