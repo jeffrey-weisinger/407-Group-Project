@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.graphics.drawable.DrawableCompat.applyTheme
 import androidx.fragment.app.Fragment
 
 class Settings : Fragment() {

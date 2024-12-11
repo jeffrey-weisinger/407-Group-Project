@@ -3,5 +3,12 @@
     <style name="Base.Theme.GroupProject407" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorSecondary">@color/dark_secondary</item>
+        <item name="colorError">@color/dark_error</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorOnSurface">@color/dark_on_surface</item>
+        <item name="colorOnBackground">@color/dark_on_background</item>
     </style>
 </resources>

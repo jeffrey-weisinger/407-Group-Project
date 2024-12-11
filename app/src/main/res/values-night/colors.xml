@@ -4,8 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="selected">#FF5347</color>
     <color name="unselected">#BE0119</color>
-    <color name="background">#2B2735</color>
-    <color name="background2">#C3C3BD</color>
+    <color name="background">#231447</color>
+    <color name="background2">#2D3564</color>
     <color name="score">#1DEB65</color>
 
     <color name="schoolwork">#1DACD6</color>
@@ -17,5 +17,13 @@
     <color name="prioritySoon">#FF4040</color>
     <color name="priorityMild">#EAC117</color>
     <color name="priorityNotSoon">#0BDA51</color>
+
+    <color name="dark_background">#F35C467A</color>
+    <color name="dark_surface">#922F2F</color>
+    <color name="dark_primary">#BB86FC</color>
+    <color name="dark_secondary">#6200EE</color>
+    <color name="dark_error">#CF6679</color>
+    <color name="dark_on_surface">#FFFFFF</color>
+    <color name="dark_on_background">#E0E0E0</color>
 
 </resources>
