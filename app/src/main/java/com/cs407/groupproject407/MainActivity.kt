@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -81,6 +82,19 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
         }
 
+        // Apply the theme from SharedPreferences on app start
+        val sharedPrefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+        val isLightThemeEnabled = sharedPrefs.getBoolean("light_theme_enabled", true)
+        applyTheme(isLightThemeEnabled)
+
+    }
+
+    private fun applyTheme(isLightThemeEnabled: Boolean) {
+        if (isLightThemeEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 }
 
