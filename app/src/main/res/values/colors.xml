@@ -9,9 +9,9 @@
     <color name="score">#1DEB65</color>
 
     <color name="schoolwork">#1DACD6</color>
-    <color name="recreation">#E840B5</color>
+    <color name="recreation">#90c73b</color>#E840B5
     <color name="social">#DDAA44</color>
-    <color name="work">#4BD17C</color>
+    <color name="work">#E840B5</color>#90c73b
     <color name="meeting">#A23CEA</color>
 
     <color name="prioritySoon">#FF4040</color>
