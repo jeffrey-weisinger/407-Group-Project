@@ -14,14 +14,57 @@
         tools:text="22" />
 
 <!--   add bar here for if day has something -->
+
+
     <View
-        android:id="@+id/blue_rectangle"
+        android:id="@+id/social_marker"
         android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:background="#0000FF"
+        android:layout_height="7dp"
+        android:background="@color/social"
         android:layout_marginEnd="22dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/meeting_marker"
+        android:layout_width="0dp"
+        android:layout_height="7dp"
+        android:background="@color/meeting"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/social_marker" />
+
+    <View
+        android:id="@+id/recreation_marker"
+        android:layout_width="0dp"
+        android:layout_height="7dp"
+        android:background="@color/recreation"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/meeting_marker" />
+
+    <View
+        android:id="@+id/school_marker"
+        android:layout_width="0dp"
+        android:layout_height="7dp"
+        android:background="@color/schoolwork"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/recreation_marker" />
+
+    <View
+        android:id="@+id/work_marker"
+        android:layout_width="0dp"
+        android:layout_height="7dp"
+        android:background="@color/work"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/school_marker" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
