@@ -163,7 +163,7 @@ class Calendar : Fragment() {
                     val monthIndex = data.yearMonth.monthValue - 1
                     val monthName = monthNames[monthIndex]
 
-                    container.titlesContainer.children.map { it.findViewById<TextView>(R.id.calendarDayText) }
+                    container.titlesContainer.children.map { it.findViewById<TextView>(R.id.month_header) }
                         .forEachIndexed { index, textView ->
                             if (index == 0) {
                                 textView.text = monthName

@@ -19,16 +19,16 @@
         layout="@layout/calendar_day_titles_container"
         />
 
-    <com.kizitonwose.calendar.view.CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cv_dayViewResource="@layout/calendar_day_layout"
-        app:cv_monthHeaderResource="@layout/calendar_day_titles_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.kizitonwose.calendar.view.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cv_dayViewResource="@layout/calendar_day_layout"
+            app:cv_monthHeaderResource="@layout/month_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
