@@ -4,8 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="selected">#FF5347</color>
     <color name="unselected">#BE0119</color>
-    <color name="background">#29292D</color>
-    <color name="background2">#484851</color>
+    <color name="background">#2B2B35</color>
+    <color name="background2">#444451</color>
     <color name="score">#1DEB65</color>
 
     <color name="schoolwork">#1DACD6</color>

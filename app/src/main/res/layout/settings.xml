@@ -5,13 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteX="-9dp"
-    tools:layout_editor_absoluteY="0dp">
-
-
-
-
+    tools:context=".MainActivity" >
 
     <TextView
         android:id="@+id/goals"
@@ -25,266 +19,193 @@
         android:textSize="32dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.231" />
 
+    <TextView
+        android:id="@+id/timeSettingsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="52dp"
+        android:background="@color/background"
+        android:gravity="center_vertical"
+        android:text="   Time Settings:"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/goals"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/layout1"
+        android:id="@+id/hour24Box"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/timeSettingsTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hour12Box"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginBottom="91dp"
         android:background="@color/background"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="   Time Settings: "
         android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hour24Box"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-    <CheckBox
-        android:id="@+id/layout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
-        android:background="@color/background2"
-        android:fontFamily="sans-serif"
+    <RadioButton
+        android:id="@+id/radio24"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
         android:text="24 Hour"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        android:background="@color/background2"
+        app:layout_constraintBottom_toBottomOf="@id/hour24Box"
+        app:layout_constraintTop_toTopOf="@id/hour24Box"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1" />
 
-    <CheckBox
-        android:id="@+id/layout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
+    <RadioButton
+        android:id="@+id/radio12"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
         android:background="@color/background"
-        android:fontFamily="sans-serif"
+        android:buttonTint="@color/selected"
         android:text="12 Hour"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintBottom_toBottomOf="@id/hour12Box"
+        app:layout_constraintTop_toTopOf="@id/hour12Box"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.507" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1" />
 
-<!--    <RadioGroup-->
-<!--        android:id="@+id/layout2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="52dp"-->
-<!--        android:layout_marginBottom="91dp"-->
-<!--        android:background="@color/background2"-->
-<!--        android:fontFamily="sans-serif"-->
-<!--        android:gravity=""-->
-<!--        android:text="   Time Settings: "-->
-<!--        android:textSize="18dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.518"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.434" >-->
-
-
-<!--    <RadioButton-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="24 Hour"/>-->
-
-<!--    </RadioGroup>-->
-
-<!--    <RadioGroup-->
-<!--        android:id="@+id/layout3"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="52dp"-->
-<!--        android:layout_marginBottom="91dp"-->
-<!--        android:background="@color/background"-->
-<!--        android:fontFamily="sans-serif"-->
-<!--        android:gravity=""-->
-<!--        android:text="   Time Settings: "-->
-<!--        android:textSize="18dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.518"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.507" >-->
-
-
-<!--        <RadioButton-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="12 Hour"/>-->
-
-<!--    </RadioGroup>-->
-    
     <TextView
-        android:id="@+id/layout4"
+        android:id="@+id/startingDayTitle"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:layout_marginBottom="91dp"
         android:background="@color/background2"
-        android:fontFamily="sans-serif"
-        android:gravity=""
-        android:text=" "
+        android:gravity="center_vertical"
+        android:text="   Starting Day:"
         android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/hour12Box"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
-
-
-    <TextView
-        android:id="@+id/blankTextBox"
-        android:layout_width="192dp"
-        android:layout_height="22dp"
-        android:layout_marginBottom="91dp"
-        android:background="@color/white"
-        android:elevation="10dp"
-        android:fontFamily="sans-serif"
-        android:gravity=""
-        android:text=" "
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
-
-    <TextView
-        android:id="@+id/startingDayText"
-        android:layout_width="206dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="91dp"
-        android:background="@color/background2"
-        android:fontFamily="sans-serif"
-        android:gravity=""
-        android:text="Starting Day: "
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.029"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
         android:id="@+id/startingDay"
         android:layout_width="216dp"
-        android:layout_height="40dp"
-        android:elevation="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
-
-
-    <TextView
-        android:id="@+id/lightSettings"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginBottom="91dp"
-        android:background="@color/background2"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.874" />
-
-    <CheckBox
-        android:id="@+id/checkboxSun"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginBottom="91dp"
-        android:background="@color/background2"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.73" />
-
-    <TextView
-        android:id="@+id/lightSettingsSun"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginBottom="91dp"
-        android:background="@color/background"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:text="   Light Settings: "
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.655" />
-
-
-    <CheckBox
-        android:id="@+id/BlankPanel"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginBottom="91dp"
-        android:background="@color/background"
-        android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804   " />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="45dp"
         android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
+        android:elevation="25dp"
+        android:gravity="center"
+        android:background="@drawable/border"
+        android:popupBackground="@drawable/border"
+        android:popupElevation="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/startingDayTitle"
+        app:layout_constraintTop_toTopOf="@id/startingDayTitle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702"
-        app:srcCompat="@drawable/moon_symbol" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65" />
+
+    <TextView
+        android:id="@+id/lightSettingsTitle"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/background"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="   Light Settings:"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/startingDayTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/moonBox"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background2"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/lightSettingsTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sunBox"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="91dp"
+        android:background="@color/background"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/moonBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioButton
+        android:id="@+id/checkboxSun"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/background2"
+        android:text="Light Mode"
+        app:layout_constraintBottom_toBottomOf="@id/moonBox"
+        app:layout_constraintTop_toTopOf="@id/moonBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1" />
+
+    <RadioButton
+        android:id="@+id/checkboxMoon"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:background="@color/background"
+        android:text="Dark Mode"
+        app:layout_constraintTop_toTopOf="@id/sunBox"
+        app:layout_constraintBottom_toBottomOf="@id/sunBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="46dp"
-        android:layout_height="38dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/moonImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="@id/checkboxMoon"
+        app:layout_constraintBottom_toBottomOf="@id/checkboxMoon"
+        app:layout_constraintStart_toEndOf="@id/checkboxMoon"
+        app:srcCompat="@drawable/dark_mode_symbol" />
+
+    <ImageView
+        android:id="@+id/sunImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintTop_toTopOf="@id/checkboxSun"
+        app:layout_constraintBottom_toBottomOf="@id/checkboxSun"
+        app:layout_constraintStart_toEndOf="@id/checkboxSun"
+        app:srcCompat="@drawable/light_mode_symbol" />
+
+    <TextView
+        android:id="@+id/bottomBox"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/background2"
+        android:gravity="center_vertical"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@id/sunBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.364"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643"
-        app:srcCompat="@drawable/sun_symbol" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

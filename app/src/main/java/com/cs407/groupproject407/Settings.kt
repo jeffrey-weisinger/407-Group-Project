@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
+import android.widget.RadioButton
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
@@ -28,8 +29,8 @@ class Settings : Fragment() {
         )
         daySpinner.adapter = dayAdapter
 
-        val checkboxSun = settingsView.findViewById<CheckBox>(R.id.checkboxSun)
-        val blankPanel = settingsView.findViewById<CheckBox>(R.id.BlankPanel)
+        val checkboxSun = settingsView.findViewById<RadioButton>(R.id.checkboxSun)
+        val checkboxMoon = settingsView.findViewById<RadioButton>(R.id.checkboxMoon)
 
 
         val sharedPrefs = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
@@ -39,23 +40,23 @@ class Settings : Fragment() {
         val isLightThemeEnabled = sharedPrefs.getBoolean("light_theme_enabled", true)
         applyTheme(isLightThemeEnabled)
         checkboxSun.isChecked = isLightThemeEnabled
-        blankPanel.isChecked = !isLightThemeEnabled
+        checkboxMoon.isChecked = !isLightThemeEnabled
 
         checkboxSun.setOnCheckedChangeListener { _, isChecked ->
             val editor = sharedPrefs.edit()
             if (isChecked) {
-                blankPanel.isChecked = false // Uncheck the other checkbox
+                checkboxMoon.isChecked = false // Uncheck the other checkbox
                 editor.putBoolean("light_theme_enabled", true)
                 applyTheme(true)
             } else {
-                blankPanel.isChecked = true // Check the other checkbox
+                checkboxMoon.isChecked = true // Check the other checkbox
                 editor.putBoolean("light_theme_enabled", false)
                 applyTheme(false)
             }
             editor.apply()
         }
 
-        blankPanel.setOnCheckedChangeListener { _, isChecked ->
+        checkboxMoon.setOnCheckedChangeListener { _, isChecked ->
             val editor = sharedPrefs.edit()
             if (isChecked) {
                 checkboxSun.isChecked = false // Uncheck the other checkbox
@@ -70,8 +71,8 @@ class Settings : Fragment() {
         }
 
 
-        val checkbox24Hour = settingsView.findViewById<CheckBox>(R.id.layout2)
-        val checkbox12Hour = settingsView.findViewById<CheckBox>(R.id.layout3)
+        val checkbox24Hour = settingsView.findViewById<RadioButton>(R.id.radio24)
+        val checkbox12Hour = settingsView.findViewById<RadioButton>(R.id.radio12)
 
         // Load time format preference
         val is24HourFormat = sharedPrefs.getBoolean("is24HourFormat", true) // Default to 24-hour
