@@ -30,11 +30,14 @@ class Settings : Fragment() {
 
         val checkboxSun = settingsView.findViewById<CheckBox>(R.id.checkboxSun)
         val blankPanel = settingsView.findViewById<CheckBox>(R.id.BlankPanel)
-        val sharedPrefs = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
+
+        val sharedPrefs = requireActivity().getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         // Load theme preference
         val isLightThemeEnabled = sharedPrefs.getBoolean("light_theme_enabled", true)
         applyTheme(isLightThemeEnabled)
+        checkboxSun.isChecked = isLightThemeEnabled
+        blankPanel.isChecked = !isLightThemeEnabled
 
         checkboxSun.setOnCheckedChangeListener { _, isChecked ->
             val editor = sharedPrefs.edit()
