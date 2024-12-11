@@ -2,6 +2,7 @@ package com.cs407.groupproject407
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ImageView
@@ -59,7 +60,6 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(R.id.upcomingTasks).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
             findViewById<Button>(R.id.score).setBackgroundColor(ContextCompat.getColor(this, R.color.selected))
             findViewById<Button>(R.id.calendar).setBackgroundColor(ContextCompat.getColor(this, R.color.unselected))
-
         }
 
         findViewById<ImageView>(R.id.settings).setOnClickListener {
@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPrefs = getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
         val isLightThemeEnabled = sharedPrefs.getBoolean("light_theme_enabled", true)
         applyTheme(isLightThemeEnabled)
+
 
     }
 

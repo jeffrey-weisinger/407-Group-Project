@@ -1,9 +1,11 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
 
 }
+
 
 android {
 
@@ -47,6 +49,10 @@ android {
     }
 }
 
+//repositories {
+//    maven { url = uri("https://jitpack.io") }
+//}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -61,6 +67,8 @@ dependencies {
     //for Calendar
     implementation("com.kizitonwose.calendar:view:2.6.0")
 
-
+    //for graph
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
 }
+
