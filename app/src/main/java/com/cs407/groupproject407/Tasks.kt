@@ -56,7 +56,7 @@ class Tasks private constructor(context: Context) {
             val currTitle = currTask.getString("activityName")
 
             val dayOfWeekTemp = ""
-            CoroutineScope(Dispatchers.IO).launch {
+            CoroutineScope(Dispatchers.Default).launch {
                 val currDayOfWeek = calcDayOfWeek(currDate)
                 val dayOfWeekFormatted = formatDayOfWeek(currDayOfWeek)
                 // Ensure task has been added to list first

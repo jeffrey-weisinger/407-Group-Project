@@ -53,30 +53,34 @@ class TaskViewHolder(
         taskType.text = taskSummary.taskType
 
         // Set task type background color
-        if (taskSummary.taskType == "School") {
-            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.schoolwork))
-        } else if (taskSummary.taskType == "Recreation") {
-            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.recreation))
-        } else if (taskSummary.taskType == "Social") {
-            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.social))
-        } else if (taskSummary.taskType == "Work") {
-            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.work))
-        } else if (taskSummary.taskType == "Meeting") {
-            taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.meeting))
+        when (taskSummary.taskType) {
+            "School" -> taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.schoolwork))
+            "Recreation" -> taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.recreation))
+            "Social" -> taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.social))
+            "Work" -> taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.work))
+            "Meeting" -> taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.meeting))
+        }
+
+        val splitDate = taskSummary.taskDate.split("-")
+        val formattedDate = "Due: ${splitDate[1]}/${splitDate[2]}/${splitDate[0]} at "
+
+        val dayOfWeek = taskSummary.dayOfWeek
+        var recurring = ""
+        if (taskSummary.isRecurring) {
+            recurring = "\nRecurring ${dayOfWeek}s"
         }
 
         val splitTime = taskSummary.taskTime.split(":")
-        val formattedTime = formatTime(taskSummary.taskTime)
-        val dayOfWeek = taskSummary.dayOfWeek
-
-        val splitDate = taskSummary.taskDate.split("-")
-        var formattedDate = "Due: ${splitDate[1]}/${splitDate[2]}/${splitDate[0]} at $formattedTime"
-
-        if (taskSummary.isRecurring) {
-            formattedDate += "\nRecurring ${dayOfWeek}s"
+        var formattedTime = "XX:XX"
+        CoroutineScope(Dispatchers.IO).launch {
+            formattedTime = formatTime(taskSummary.taskTime)
+            val formattedDateFinal = formattedDate + formattedTime + recurring
+            taskDate.text = formattedDateFinal
         }
 
-        taskDate.text = formattedDate
+        val formattedDateFinal = formattedDate + formattedTime + recurring
+
+        taskDate.text = formattedDateFinal
         taskInfo.text = taskSummary.taskInfo
 
 
@@ -110,27 +114,30 @@ class TaskViewHolder(
     }
 
     // Formats time
-    private fun formatTime(time: String): String {
-        val splitTime = time.split(":").toMutableList()
+    private suspend fun formatTime(time: String): String {
+        return withContext(Dispatchers.IO) {
+            val splitTime = time.split(":").toMutableList()
 
-        // Use 12/24 hour based on user's setting
-        val sharedPrefs = itemView.context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
-        val is24HourFormat = sharedPrefs.getBoolean("is24HourFormat", true)
+            // Use 12/24 hour based on user's setting
+            val sharedPrefs =
+                itemView.context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+            val is24HourFormat = sharedPrefs.getBoolean("is24HourFormat", true)
 
-        if (splitTime[1].length == 1) {
-            splitTime[1] += "0"
-        }
-
-        var timeOfDay = " AM"
-        if (is24HourFormat) {
-            timeOfDay = ""
-        } else {
-            if (splitTime[0].toInt() > 12) {
-                splitTime[0] = (splitTime[0].toInt() - 12).toString()
-                timeOfDay = " PM"
+            if (splitTime[1].length == 1) {
+                splitTime[1] += "0"
             }
-        }
 
-        return "${splitTime[0]}:${splitTime[1]}$timeOfDay"
+            var timeOfDay = " AM"
+            if (is24HourFormat) {
+                timeOfDay = ""
+            } else {
+                if (splitTime[0].toInt() > 12) {
+                    splitTime[0] = (splitTime[0].toInt() - 12).toString()
+                    timeOfDay = " PM"
+                }
+            }
+
+            return@withContext "${splitTime[0]}:${splitTime[1]}$timeOfDay"
+        }
     }
 }
