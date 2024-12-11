@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
+import java.util.Calendar
+import java.util.GregorianCalendar
 
 class TaskAdapter(
     private val taskList: List<TaskSummary>,
@@ -37,6 +39,8 @@ class TaskViewHolder(
     private val taskType: TextView = itemView.findViewById(R.id.taskType)
     private val taskDate: TextView = itemView.findViewById(R.id.taskDueDate)
     private val taskInfo: TextView = itemView.findViewById(R.id.taskInfo)
+    private val taskPriority: TextView = itemView.findViewById(R.id.taskPriority)
+    private val taskPriorityColor: TextView = itemView.findViewById(R.id.taskPriorityColor)
 
     fun bind(taskSummary: TaskSummary) {
         taskTitle.text = taskSummary.taskTitle
@@ -55,6 +59,7 @@ class TaskViewHolder(
             taskType.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.meeting))
         }
 
+        val splitTime = taskSummary.taskTime.split(":")
         val formattedTime = formatTime(taskSummary.taskTime)
         val dayOfWeek = taskSummary.dayOfWeek
 
@@ -67,6 +72,35 @@ class TaskViewHolder(
 
         taskDate.text = formattedDate
         taskInfo.text = taskSummary.taskInfo
+
+
+        // Get day of week from Calendar
+        val day = splitDate[2].toInt()
+        val month = splitDate[1].toInt() - 1 // 0 indexed
+        val year = splitDate[0].toInt()
+        val hour = splitTime[0].toInt()
+        val minute = splitTime[1].toInt()
+
+        // Set priority
+        val compareTime = GregorianCalendar(year, month, day, hour, minute)
+        compareTime.add(Calendar.DATE, -1) // Due tomorrow
+        val prioritySoon = Calendar.getInstance().time.after(compareTime.time)
+        compareTime.add(Calendar.DATE, -6) // Due in one week
+        val priorityMild = Calendar.getInstance().time.after(compareTime.time)
+
+        var finalPriority = "Priority: Not Due Soon"
+        var priorityColor = R.color.priorityNotSoon
+        if (priorityMild) {
+            finalPriority = "Priority: Mild"
+            priorityColor = R.color.priorityMild
+        }
+        if (prioritySoon) {
+            finalPriority = "Priority: Due soon"
+            priorityColor = R.color.prioritySoon
+        }
+
+        taskPriority.text = finalPriority
+        taskPriorityColor.setBackgroundColor(ContextCompat.getColor(itemView.context, priorityColor))
     }
 
     // Formats time
