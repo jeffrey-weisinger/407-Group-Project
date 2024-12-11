@@ -98,21 +98,22 @@ class Score : Fragment() {
         balanceChart.data = PieData(dataSet)
 
         var variance: Float = 0f
-        var mean = (workCounter + schoolCounter + recreationCounter + meetingCounter + socialCounter).toFloat() / 5f
-        variance += (mean-workCounter)*(mean-workCounter)
-        variance += (mean-schoolCounter)*(mean-schoolCounter)
-        variance += (mean-recreationCounter)*(mean-recreationCounter)
-        variance += (mean-meetingCounter)*(mean-meetingCounter)
-        variance += (mean-socialCounter)*(mean-socialCounter)
-        variance /= 4f
+        var totalWork = 0f
+        var totalRecreation = 0f
+        totalWork += workCounter  + schoolCounter + meetingCounter
+        totalRecreation += recreationCounter + socialCounter
+        var mean = (totalWork + totalRecreation) / 2f
+        variance += (mean-totalWork)* (mean-totalWork)
+        variance += (mean-totalRecreation)* (mean-totalRecreation)
         //the variance should be correct now.
-        Log.d(socialCounter.toString(), "s")
-        Log.d(meetingCounter.toString(), "m")
-        Log.d(recreationCounter.toString(), "r")
-        Log.d(schoolCounter.toString(), "s")
-        Log.d(workCounter.toString(), "w")
-        Log.d(mean.toString(), "mean")
+
         var score = 1000 - variance*100
+        if (totalWork == 0f){
+            score -= 100
+        }
+        if (totalRecreation == 0f){
+            score -= 100
+        }
 
         var scoreText: TextView = requireView().findViewById(R.id.finalScoreText)
         if (mean == 0f){
